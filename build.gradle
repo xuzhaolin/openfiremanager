@@ -1,0 +1,48 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.1.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath 'org.springframework:springloaded:1.2.3.RELEASE'
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+jar {
+	baseName = '28openfiremanage'
+	version = '0.0.1-SNAPSHOT'
+}
+
+sourceCompatibility = 1.8
+
+repositories {
+	maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
+}
+
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-activemq')
+	compile('org.springframework.boot:spring-boot-starter-web')
+	runtime('mysql:mysql-connector-java')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+	compile "org.igniterealtime.smack:smack-java7:4.2.0-rc3"
+	compile("org.igniterealtime.smack:smack-tcp:4.2.0-rc3")
+	compile("org.igniterealtime.smack:smack-tcp:4.2.0-rc3")
+	compile("org.igniterealtime.smack:smack-im:4.2.0-rc3")
+	compile("org.igniterealtime.smack:smack-extensions:4.2.0-rc3")
+	compile("org.apache.activemq:activemq-broker")
+	compile("com.thoughtworks.xstream:xstream:1.4.7")
+	compile('org.igniterealtime:rest-api-client:1.1.3')
+}
+
+configurations {
+	compile.exclude group:'ch.qos.logback'
+}
+
